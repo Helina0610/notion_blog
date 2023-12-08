@@ -15,3 +15,5 @@ export const CardItem = () => {
     </li>
   )
 }
+
+export default CardItem;

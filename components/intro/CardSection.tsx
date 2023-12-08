@@ -10,3 +10,5 @@ export const CardSection = () => {
     </section>
   )
 }
+
+export default CardSection;

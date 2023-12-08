@@ -8,3 +8,5 @@ export const CardList = () => {
     </ul>
   )
 }
+
+export default CardList;
