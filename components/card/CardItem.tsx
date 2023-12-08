@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-export const CardItem = () => {
+const CardItem = () => {
   return (
     <li className='rounded-3xl overflow-hidden shadow-lg group flex  flex-col'>
       <Link href={''}>
