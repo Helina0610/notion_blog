@@ -1,10 +1,5 @@
 import React from 'react'
 
-interface CardSectionProps {
-  cardItems: ParsedDatabaseItemType[];
-}
-
-export const CardSection = ({cardItems} : CardSectionProps) => {
 export const CardSection = () => {
   return (
     <section>
