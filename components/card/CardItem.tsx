@@ -2,6 +2,7 @@ import { ParsedDatabaseItemType } from '@/utils/parseDatabaseItems'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { IconRenderer } from './IconRenderer'
 
 interface CardItemProps {
 	cardItem : ParsedDatabaseItemType
@@ -15,9 +16,9 @@ const CardItem = ({cardItem} : CardItemProps) => {
           <div className='relative aspect-[1.5/1]'>
             <Image src={cover} alt={title} layout='fill' className=' group-hover:scale-105 translate-transform' />
           </div>
-          <div className='p-6 flext flex-col gap-4 '>
+          <div className='p-4 flext flex-col gap-4 '>
             <h4 className='font-bold text-2xl group-hover:text-blue-600 transition-colors flex flex-row items-center gap-1'>
-              {/* <IconRenderer icon={icon} alt={title} proxyIconUrl={proxy.icon}/> */}
+              <IconRenderer icon={icon} />
               {title}
             </h4>
             { description ? (<p className='font-medium text-gray-600'>{description}</p>) : null}
