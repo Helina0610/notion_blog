@@ -1,6 +1,12 @@
 import Link from 'next/link'
 import React from 'react'
 
+interface CardItemProps {
+	cardItem : ParsedDatabaseItemType
+}
+
+const CardItem = ({cardItem} : CardItemProps) => {
+  const {description,icon,id,published, tags,title, previewImage, cover} = {...cardItem}
 const CardItem = () => {
   return (
     <li className='rounded-3xl overflow-hidden shadow-lg group flex  flex-col'>
