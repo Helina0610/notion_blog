@@ -7,8 +7,6 @@ interface CardSectionProps {
 }
 
 export const CardSection = ({cardItems} : CardSectionProps) => {
-  console.log("푸바오 귀여웡")
-  console.log(cardItems);
   return (
     <section>
       <div className="max-w-5xl w-4/5 mx-auto flex flex-col gap-6 py-8">

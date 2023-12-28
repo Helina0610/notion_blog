@@ -8,8 +8,6 @@ interface CardItemProps {
 }
 
 const CardItem = ({cardItem} : CardItemProps) => {
-  console.log("푸바오");
-  console.log(cardItem.cover);
   const {description,icon,id,published, tags,title, previewImage, cover} = {...cardItem}
   return (
     <li className='rounded-3xl overflow-hidden shadow-lg group flex  flex-col'>
