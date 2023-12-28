@@ -12,8 +12,8 @@ const CardItem = ({cardItem} : CardItemProps) => {
   return (
     <li className='rounded-3xl overflow-hidden shadow-lg group flex  flex-col'>
         <Link href=''>
-          <div className='relative aspect-[1.3/1]'>
-            {/* <Image src={cover} alt={title} layout='fill' className=' group-hover:scale-105 translate-transform' /> */}
+          <div className='relative aspect-[1.5/1]'>
+            <Image src={cover} alt={title} layout='fill' className=' group-hover:scale-105 translate-transform' />
           </div>
           <div className='p-6 flext flex-col gap-4 '>
             <h4 className='font-bold text-2xl group-hover:text-blue-600 transition-colors flex flex-row items-center gap-1'>
