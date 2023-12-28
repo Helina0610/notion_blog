@@ -9,6 +9,7 @@ interface CardItemProps {
 
 const CardItem = ({cardItem} : CardItemProps) => {
   const {description,icon,id,published, tags,title, previewImage, cover} = {...cardItem}
+
   return (
     <li className='rounded-3xl overflow-hidden shadow-lg group flex  flex-col'>
         <Link href=''>
