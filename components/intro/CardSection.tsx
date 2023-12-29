@@ -1,7 +1,6 @@
 import { ParsedDatabaseItemType } from '@/utils/parseDatabaseItems';
 import React from 'react'
 import CardList from '../card/CardList';
-import { TagList } from '../card/tag/TagList';
 
 interface CardSectionProps {
   cardItems: ParsedDatabaseItemType[];
