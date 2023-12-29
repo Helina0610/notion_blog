@@ -2,6 +2,7 @@ import { getDatabaseFromNotion } from "@/cms/notionClient";
 import { CardSection } from "@/components/intro/CardSection";
 import HeroSection from "@/components/intro/HeroSection";
 import { ParsedDatabaseItemType, parseDatabaseItems } from "@/utils/parseDatabaseItems";
+import { cache } from "react";
 
 export interface HomeProps {
   databaseItems : ParsedDatabaseItemType[],
@@ -9,7 +10,8 @@ export interface HomeProps {
 
 export default async function Home() {
   if(!process.env.DATABASE_ID) throw new Error("DATABASE_ID is not defined");
-  const data = await getData();
+  const data = await getItem();
+
   return (
     <div>
       <HeroSection />
@@ -26,3 +28,12 @@ async function getData () {
 
   return parsedDatabaseItems;
 }
+
+//revalidate 사용하기 위해 react-cache 사용..? 맞나..?
+const getItem = cache(async () => {
+  if(!process.env.DATABASE_ID) throw new Error("DATABASE_ID is not defined");
+  const res = await getDatabaseFromNotion(process.env.DATABASE_ID);
+  const parsedDatabaseItems = parseDatabaseItems(res);
+
+  return parsedDatabaseItems;
+})
