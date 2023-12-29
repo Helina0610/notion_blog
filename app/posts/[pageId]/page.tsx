@@ -14,7 +14,6 @@ export default async function Posts  ({params} : PostParams)  {
     <>
       {/* <PageHead title={title} description={description} keywords={keywords} image={ogImage}/> */}
       <NotionPageRenderer recordMap={recordMap} />
-      <p>params.pageId : {params.pageId}</p>
     </>
   )
 }
