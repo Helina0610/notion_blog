@@ -6,7 +6,8 @@ import { TagItem } from './TagItem';
 interface TagListProps {
   tags : ParsedDatabaseItemType['tags']
 }
-const TagList = ({tags} : TagListProps) => {
+
+export const TagList = ({tags} : TagListProps) => {
   return (
     <ul className='p-4 flex flex-row flex-wrap gap-2'>
       {
@@ -18,5 +19,3 @@ const TagList = ({tags} : TagListProps) => {
     </ul>
   )
 }
-
-export default TagList
