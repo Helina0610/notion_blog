@@ -11,10 +11,6 @@ export const HeroSection = () => {
 					<span className='font-bold text-white bg-black py-2 px-2 rounded-lg relative'>Hello</span>
 				</div>
 				<h2 className='font-black text-7xl leading-[1.2] break-keep'>HJ Code Garden</h2>
-        <div className='relative'>
-            {/* <Image src="/image/blog_main.jpg" alt='메인' width={800} height={200} className=''/> */}
-            
-        </div>
 				<p className='font-light text-xl text-gray-400 md:max-w-xl'>Be a Colorful Girl</p>
 				{/* <div>
 					<Link href={"/about"}>
