@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { IconRenderer } from './IconRenderer'
+import TagList from './tag/TagList'
 
 interface CardItemProps {
 	cardItem : ParsedDatabaseItemType
@@ -26,6 +27,7 @@ const CardItem = ({cardItem} : CardItemProps) => {
             <time className='font-medium text-gray-700'>{published}</time>
           </div>
 				</Link>
+        { tags.length > 0 ? <TagList tags={tags}/> : null}
     </li>
   )
 }

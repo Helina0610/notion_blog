@@ -12,6 +12,18 @@ export const notionClient = new Client({
   auth : process.env.NOTION_TOKEN,
 });
 
+//revalidateTag 사용 버전 - 불필요한 렌더링 방지
+const notionClient2 = new Client({
+  auth : process.env.NOTION_TOKEN,
+  fetch : (url , opts) => {
+    return fetch(url,{
+      ...opts,
+      next : {tags : ['notion']},
+      cache : 'force-cache',
+    })
+  }
+})
+
 export const getDatabaseFromNotion =async (databaseId:string, option? : DatabaseQueryOption) => {
   const response = await notionClient.databases.query({
     database_id : databaseId,
