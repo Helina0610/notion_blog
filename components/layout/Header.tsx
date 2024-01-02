@@ -5,10 +5,6 @@ import Link from 'next/link'
 
 const navLinks = [
   {
-    name : "Tags",
-    link : "/tags"
-  },
-  {
     name : "About",
     link : "/about"
   }
