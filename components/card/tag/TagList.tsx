@@ -1,22 +1,20 @@
+import { PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
+import Image from 'next/image';
 import React from 'react'
 
-import { ParsedDatabaseItemType  } from '@/utils/parseDatabaseItems';
-import { TagItem } from './TagItem';
 
-interface TagListProps {
-  tags : ParsedDatabaseItemType['tags']
+interface IconRendererProps {
+	icon : PageObjectResponse['icon'],
+	// icon : ParseDatabaseItemType['icon']
+  alt : string;
+  proxyIconUrl? : string,
 }
-const TagList = ({tags} : TagListProps) => {
+export const IconRenderer = ({icon, alt ,proxyIconUrl} : IconRendererProps) => {
+  if(!icon) return null;
+	
+	if(icon.type === "emoji") return <span>{icon.emoji}</span>
+  const iconURL = icon.type === "file" ? icon.file.url : icon.external.url
   return (
-    <ul className='p-4 flex flex-row flex-wrap gap-2'>
-      {
-        tags.map((tag)=>(
-          <TagItem key={tag.id} tagItem={tag}/>
-
-        ))
-      }
-    </ul>
+    <Image src={ iconURL} alt={`${alt} icon`} width={28} height={28} className=' rounded-full' />
   )
 }
-
-export default TagList
