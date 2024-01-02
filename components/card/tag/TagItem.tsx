@@ -10,7 +10,7 @@ export const TagItem = ({tagItem} : TagItemPros) => {
   const {name, color} = tagItem;
   return (
     <li className='list-none'>
-      <Link href={`/tag/${name.toLowerCase()}`} className=' hover:underline px-2 py-1 rounded-full font-light' style={{backgroundColor : COLOR_TABLE[color]}}>{name}</Link>
+      <Link href={`tags/${name.toLowerCase()}`} className=' hover:underline px-2 py-1 rounded-full font-normal text-sm ' style={{backgroundColor : COLOR_TABLE[color]}}>{name}</Link>
     </li>
   )
 }
