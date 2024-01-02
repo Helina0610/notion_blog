@@ -11,6 +11,7 @@ interface CardItemProps {
 
 const CardItem = ({cardItem} : CardItemProps) => {
   const {description,icon,id,published, tags,title, previewImage, cover} = {...cardItem}
+
   return (
     <li className='rounded-3xl overflow-hidden shadow-lg group flex  flex-col'>
         <Link href={`posts/${id}`}>
@@ -19,7 +20,7 @@ const CardItem = ({cardItem} : CardItemProps) => {
           </div>
           <div className='p-4 flext flex-col gap-4 '>
             <h4 className='font-bold text-2xl group-hover:text-blue-600 transition-colors flex flex-row items-center gap-1'>
-              <IconRenderer icon={icon} alt={title}/>
+              <IconRenderer icon={icon} alt={title}/>]
               {title}
             </h4>
             { description ? (<p className='font-medium text-gray-600 pt-2 '>{description}</p>) : null}
