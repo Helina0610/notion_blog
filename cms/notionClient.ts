@@ -75,3 +75,19 @@ export const getPageContent =async (pageId:string) => {
 
   return recordMap;
 }
+
+export const getSearch =async (query:string) => {
+  const res = await notionClient.search({
+    query : query,
+    filter : {
+      value : "page",
+      property :"object"
+    },
+    sort : {
+      direction : "descending",
+      timestamp : "last_edited_time"
+    }
+  })
+
+  return res.results as (PageObjectResponse | PartialPageObjectResponse )[];
+}
