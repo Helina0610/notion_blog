@@ -1,4 +1,5 @@
 
+import { Comments } from '@/components/common/Comments';
 import { PageHead } from '@/components/layout/PageHead';
 import NotionPageRenderer from '@/components/notion/NotionPageRenderer';
 import { NotionAPI } from 'notion-client';
@@ -22,6 +23,7 @@ export default async function Posts  ({params} : PostParams)  {
     <>
       {/* <PageHead title={title} description={description} keywords={keywords} image={ogImage}/> */}
       <NotionPageRenderer recordMap={recordMap} />
+      <Comments />
     </>
   )
 }
