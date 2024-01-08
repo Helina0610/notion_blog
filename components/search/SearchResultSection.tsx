@@ -5,14 +5,15 @@ import React, { useEffect, useState } from 'react'
 import useSWR from 'swr';
 import CardList from '../card/CardList';
 import { LoadingSpinner } from '../common/LoadingSpinner';
+import { Metadata } from 'next';
 
 
 export interface GetSearchResponseProps{
-  databaseItems : ParsedDatabaseItemType[];
+  queryParams : string
 }
 
-export const SearchResultSection = (queryParams : any) => {
-  const [databaseItems, setDatabaseItems] = useState<ParsedDatabaseItemType[]>();
+export const SearchResultSection = (queryParams : GetSearchResponseProps) => {
+  //const [databaseItems, setDatabaseItems] = useState<ParsedDatabaseItemType[]>();
 
   // useEffect(() => {
   //   if(!queryParams) return;
