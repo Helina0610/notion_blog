@@ -1,14 +1,24 @@
 import { getDatabaseFromNotion } from '@/cms/notionClient';
 import CardSection from '@/components/intro/CardSection';
-import HeroSection from '@/components/intro/HeroSection';
 import { TagHeroSection } from '@/components/tags/TagHeroSection';
 import { parseDatabaseItems } from '@/utils/parseDatabaseItems';
+import { Metadata } from 'next';
 import React, { cache } from 'react'
 
 interface TagPrams  {
   params  : {tagName : string}
 }
 
+export async function generateMetadata({params} : TagPrams) : Promise<Metadata> {
+  const tagName = params.tagName;
+  const pascalTagName = tagName[0].toUpperCase() + tagName.slice(1);
+
+  return {
+    title : `${tagName} | HJ`,
+    description : `${tagName} Collection`,
+    keywords : tagName
+  }
+}
 
 export default async function page ( {params} : TagPrams) {
   if(!process.env.DATABASE_ID) throw new Error("DATABASE_ID is not defined");
