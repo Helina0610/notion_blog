@@ -24,18 +24,23 @@ export async function generateMetadata({params}:PostParams) : Promise<Metadata>{
   return {
     title : ` ${title} | HJ`,
     description : description,
-    keywords : keywords
+    keywords : keywords,
+    metadataBase: new URL(process.env.BASE_URL ?? 'http://localhost:3000'),
+    openGraph : {
+      images : [
+        {
+          url : `/api/og?title=${title}`,
+          width : 1200,
+          height : 630,
+        }
+      ]
+    }
   }
 }
 
 export default async function Posts  ({params } : PostParams)  {
   const notion = new NotionAPI();
   const recordMap = await notion.getPage(params.pageId);
-
-  // const propertyValue = Object.values(recordMap.block)[0].value;
-  // const title = getPageTitle(recordMap);
-  // const keywords = getPageProperty<string[]>("태그", propertyValue, recordMap).join(",");
-  // const description = getPageProperty<string>("설명", propertyValue, recordMap);
 
   return (
     <>

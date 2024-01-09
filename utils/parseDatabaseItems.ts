@@ -11,6 +11,10 @@ export interface ParsedDatabaseItemType{
   description : string;
   title : string;
   previewImage? : unknown;
+  proxy : {
+    cover : string,
+    icon : string
+  }
 }
 
 // getDatabaseFromNotion 함수의 typeof 의 returntype 의 기다려준 값
@@ -23,7 +27,7 @@ export const parseDatabaseItems = (items : Awaited<ReturnType<typeof getDatabase
     //데이터베이스 아이디가 아닌것(Block_id) 스킵
     if(item.parent.type !== "database_id") return acc; 
 
-    const {id, cover, icon} = item;
+    const {id, cover, icon , last_edited_time} = item;
 
     const {description ,createDate ,tags , 이름 } = item.properties;
 
@@ -35,6 +39,10 @@ export const parseDatabaseItems = (items : Awaited<ReturnType<typeof getDatabase
     const pDescription = (description.type === "rich_text" ? description.rich_text[0]?.plain_text : "") ?? ""
     const pTags = tags.type === "multi_select" ? tags.multi_select : [];
 
+    //image optimization
+    const proxyCover = `/api/image?type=cover&pageId=${id}&lastEditedTime=${last_edited_time}`
+    const proxyIcon = `/api/image?type=icon&pageId=${id}&lastEditedTime=${last_edited_time}`
+
     const parsedResult : ParsedDatabaseItemType = {
       id,
       icon,
@@ -43,6 +51,10 @@ export const parseDatabaseItems = (items : Awaited<ReturnType<typeof getDatabase
       description : pDescription,
       title : pTitle,
       tags : pTags,
+      proxy : {
+        cover : proxyCover,
+        icon : proxyIcon
+      }
 
 
     }

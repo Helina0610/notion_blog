@@ -91,3 +91,10 @@ export const getSearch =async (query:string) => {
 
   return res.results as (PageObjectResponse | PartialPageObjectResponse )[];
 }
+
+export const getItem =async (pageId:string) => {
+  const response = await notionClient.pages.retrieve({
+    page_id : pageId,
+  })
+  return response
+}

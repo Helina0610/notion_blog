@@ -16,7 +16,17 @@ export async function generateMetadata({params} : TagPrams) : Promise<Metadata> 
   return {
     title : `${tagName} | HJ`,
     description : `${tagName} Collection`,
-    keywords : tagName
+    keywords : tagName,
+    metadataBase: new URL(process.env.BASE_URL ?? 'http://localhost:3000'),
+    openGraph : {
+      images : [
+        {
+          url : `/api/og?title=${tagName}`,
+          width : 1200,
+          height : 630,
+        }
+      ]
+    }
   }
 }
 
