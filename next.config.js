@@ -9,6 +9,7 @@ const nextConfig = {
       "s3.us-west-2.amazonaws.com",
       "www.notion.so",
       "prod-files-secure.s3.us-west-2.amazonaws.com",
+      "notion-blog-iqyn.vercel.app"
     ],
     remotePatterns : [
       {
@@ -29,6 +30,11 @@ const nextConfig = {
       {
         protocol : 'https',
         hostname : 'prod-files-secure.s3.us-west-2.amazonaws.com',
+        pathname : '**'
+      },
+      {
+        protocol : 'https',
+        hostname : 'notion-blog-iqyn.vercel.app',
         pathname : '**'
       },
     ]
