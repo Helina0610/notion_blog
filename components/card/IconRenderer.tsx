@@ -15,6 +15,6 @@ export const IconRenderer = ({icon, alt ,proxyIconUrl} : IconRendererProps) => {
 	if(icon.type === "emoji") return <span>{icon.emoji}</span>
   const iconURL = icon.type === "file" ? icon.file.url : icon.external.url
   return (
-    <Image src={ iconURL} alt={`${alt} icon`} width={28} height={28} className=' rounded-full' />
+    <Image src={ proxyIconUrl ?? iconURL} alt={`${alt} icon`} width={28} height={28} className=' rounded-full' />
   )
 }

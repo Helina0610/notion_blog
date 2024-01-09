@@ -17,6 +17,7 @@ export async function generateMetadata({params} : TagPrams) : Promise<Metadata> 
     title : `${tagName} | HJ`,
     description : `${tagName} Collection`,
     keywords : tagName,
+    metadataBase: new URL(process.env.BASE_URL ?? 'http://localhost:3000'),
     openGraph : {
       images : [
         {

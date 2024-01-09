@@ -25,6 +25,7 @@ export async function generateMetadata({params}:PostParams) : Promise<Metadata>{
     title : ` ${title} | HJ`,
     description : description,
     keywords : keywords,
+    metadataBase: new URL(process.env.BASE_URL ?? 'http://localhost:3000'),
     openGraph : {
       images : [
         {
