@@ -1,6 +1,4 @@
 import { getItem } from "@/cms/notionClient";
-import got from "got";
-import { ImageResponse } from "next/og";
 import { NextResponse } from "next/server";
 
 export async function GET(request:Request) {
@@ -44,5 +42,5 @@ export async function GET(request:Request) {
   const headers = new Headers(request.headers);
   headers.set("content-type" , "image/*");
 
-  return new NextResponse(blob, { headers : headers})
+  // return new NextResponse(blob, { headers : headers})
 }
