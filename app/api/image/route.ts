@@ -1,6 +1,7 @@
 import { getItem } from "@/cms/notionClient";
 import { NextResponse } from "next/server";
 import got from "got";
+import axios from "axios";
 
 export async function GET(request:Request) {
   const {searchParams} = new URL(request.url);
@@ -46,14 +47,16 @@ export async function GET(request:Request) {
 
   // return new NextResponse(blob, { headers : headers})
 
-  const content = await got(url, {
-    responseType: "buffer",
+  const content = await axios.get(url, {
+    responseType: "arraybuffer",
   });
+
+  const bufferBody = Buffer.from(content.data , "binary");
 
   const contentHeader = content.headers["content-type"];
   if (!contentHeader) throw new Error("content header is not exist");
 
-  return new NextResponse(new Blob([content.body]), {
+  return new NextResponse(new Blob([bufferBody]), {
     headers: {
       'Content-Type': contentHeader
     }
