@@ -1,7 +1,7 @@
 import { getItem } from "@/cms/notionClient";
 import { NextResponse } from "next/server";
 
-export async function POST(request:Request) {
+export async function GET(request:Request) {
   const {searchParams} = new URL(request.url);
 
   //url 의 params 가져오기
@@ -41,7 +41,6 @@ export async function POST(request:Request) {
   // header 설정
   const headers = new Headers(request.headers);
   headers.append("Content-Type" , "image/*");
-  headers.set("Content-Type" , "image/*");
 
   return new NextResponse(blob, { headers : headers})
 }
