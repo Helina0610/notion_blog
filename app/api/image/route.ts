@@ -1,7 +1,6 @@
 import { getItem } from "@/cms/notionClient";
 import { NextResponse } from "next/server";
-import got from "got";
-import axios from "axios";
+
 
 export async function GET(request:Request) {
   const {searchParams} = new URL(request.url);
@@ -36,29 +35,15 @@ export async function GET(request:Request) {
       break;
   }
 
-  // // image url -> arrayBuffer
-  // const res = await fetch(url);
-  // const blob = await res.arrayBuffer();
+  // image url -> arrayBuffer
+  const res = await fetch(url);
+  const blob = await res.arrayBuffer();
  
-  // // header 설정
-  // const headers = new Headers(res.headers);
-  // headers.append("Content-Type" , "image/*");
+  // header 설정
+  const headers = new Headers(res.headers);
+  headers.append("Content-Type" , "image/*");
 
 
-  // return new NextResponse(blob, { headers : headers})
+  return new NextResponse(blob, { headers : headers})
 
-  const content = await axios.get(url, {
-    responseType: "arraybuffer",
-  });
-
-  const bufferBody = Buffer.from(content.data , "binary");
-
-  const contentHeader = content.headers["content-type"];
-  if (!contentHeader) throw new Error("content header is not exist");
-
-  return new NextResponse(new Blob([bufferBody]), {
-    headers: {
-      'Content-Type': contentHeader
-    }
-  });
 }
