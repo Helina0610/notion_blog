@@ -25,7 +25,7 @@ const notionClient2 = new Client({
 })
 
 export const getDatabaseFromNotion =async (databaseId:string, option? : DatabaseQueryOption) => {
-  const response = await notionClient.databases.query({
+  const response = await notionClient2.databases.query({
     database_id : databaseId,
     filter : {
       and :[

@@ -40,7 +40,7 @@ export async function GET(request:Request) {
  
   // header 설정
   const headers = new Headers(request.headers);
-  headers.set("content-type" , "image/*");
-
+  headers.append("content-type" , "image/*");
+  console.log(headers.get("content-type"))
   return new NextResponse(blob, { headers : headers})
 }
