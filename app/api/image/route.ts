@@ -39,8 +39,9 @@ export async function GET(request:Request) {
   const blob = await res.arrayBuffer();
  
   // header 설정
-  const headers = new Headers(request.headers);
+  const headers = new Headers(res.headers);
   headers.append("Content-Type" , "image/*");
+
 
   return new NextResponse(blob, { headers : headers})
 }
