@@ -30,7 +30,8 @@ const nextConfig = {
         hostname : 'notion-blog-iqyn.vercel.app/**',
         pathname : '**'
       },
-    ]
+    ],
+    formats: ["image/webp"],
   },
 };
 
