@@ -1,0 +1,49 @@
+{
+  "buildCommand": "yarn build",
+  "headers": [
+    {
+      "source": "/api/:path*",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "image/*"
+        }
+      ]
+    }
+  ],
+  "images": {
+    "sizes": [256, 640, 1080, 2048, 3840],
+    "remotePatterns": [
+      {
+        "protocol": "https",
+        "hostname": "mages.unsplash.com",
+        "pathname": "**"
+      },
+      {
+        "protocol": "https",
+        "hostname": "s3.us-west-2.amazonaws.com",
+        "pathname": "**"
+      },
+      {
+        "protocol": "https",
+        "hostname": "www.notion.so",
+        "pathname": "**"
+      },
+      {
+        "protocol": "https",
+        "hostname": "prod-files-secure.s3.us-west-2.amazonaws.com",
+        "pathname": "**"
+      },
+      {
+        "protocol": "https",
+        "hostname": "notion-blog-iqyn.vercel.app",
+        "pathname": "**"
+      }
+    ],
+    "minimumCacheTTL": 60,
+    "formats": ["image/webp"],
+    "dangerouslyAllowSVG": false,
+    "contentSecurityPolicy": "script-src 'none'; frame-src 'none'; sandbox;",
+    "contentDispositionType": "inline"
+  }
+}
