@@ -1,6 +1,4 @@
 import { getItem } from "@/cms/notionClient";
-import got from "got";
-import { ImageResponse } from "next/og";
 import { NextResponse } from "next/server";
 
 export async function GET(request:Request) {
