@@ -1,7 +1,4 @@
 # 💻 Notion API + Next.js
-
----
-
 # 👍 Demo
 
 [notion-blog-iqyn.vercel.app](https://notion-blog-iqyn.vercel.app/ "https://notion-blog-iqyn.vercel.app")
