@@ -17,9 +17,9 @@ const CardItem = ({cardItem} : CardItemProps) => {
     <li className='rounded-3xl overflow-hidden shadow-lg group flex  flex-col'>
         <Link href={`posts/${id}`}>
           <div className='relative aspect-[1.5/1]'>
-            <Image src={proxy.cover} alt={title} fill className=' group-hover:scale-105 translate-transform' sizes='(min-width : 640px) 50vw, 100vw' placeholder='blur' blurDataURL={DEFAULT_BLUR_BASE64}/>
+            <Image src={proxy.cover} alt={title} fill className=' group-hover:scale-105 translate-transform' unoptimized  sizes='(min-width : 640px) 50vw, 100vw' placeholder='blur' blurDataURL={DEFAULT_BLUR_BASE64}/>
           </div>
-          <div className='p-4 flext flex-col gap-4 '>
+          <div className='p-4 flex flex-col gap-4 '>
             <h4 className='font-bold text-2xl group-hover:text-blue-600 transition-colors flex flex-row items-center gap-1'>
               <IconRenderer icon={icon} alt={title} proxyIconUrl={proxy.icon}/>
               {title}
