@@ -1,7 +1,12 @@
 import NotionPageRenderer from '@/components/notion/NotionPageRenderer'
 import { Metadata } from 'next';
 import { NotionAPI } from 'notion-client';
+import { ExtendedRecordMap } from 'notion-types';
 import React from 'react'
+
+interface AboutProps{
+  recordMap: ExtendedRecordMap;
+}
 
 export const metadata: Metadata = {
   title: 'About | HJ',
@@ -18,14 +23,8 @@ export const metadata: Metadata = {
   }
 }
 
-export default async function About() {
-  const notion = new NotionAPI(); 
-
-  const profileId = process.env.PROFILE_ID; 
-
-  if(!profileId) throw new Error("PROFILE_ID is not defined");
-  
-  const recordMap = await notion.getPage(profileId);
+export default async function About() { 
+  const {recordMap} = await getAboutContent();
 
   return (
     <div>
@@ -33,3 +32,16 @@ export default async function About() {
     </div>
   )
 }
+
+const getAboutContent = async (): Promise<AboutProps> => {
+  const notion = new NotionAPI(); 
+  const profileId = process.env.PROFILE_ID; 
+  if(!profileId) throw new Error("PROFILE_ID is not defined");
+  const recordMap = await notion.getPage(profileId);
+
+  return {
+    recordMap,
+  };
+};
+
+export const revalidate = 600;

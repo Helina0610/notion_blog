@@ -24,13 +24,12 @@ export const metadata: Metadata = {
   }
 }
 export default async function Home() {
-  if(!process.env.DATABASE_ID) throw new Error("DATABASE_ID is not defined");
-  const data = await getItem();
+  const { databaseItems } = await getFirstDatabaseItems();
 
   return (
     <div>
       <HeroSection />
-      <CardSection cardItems = {data}/>
+      <CardSection cardItems = {databaseItems}/>
     </div>
   )
 }
@@ -52,3 +51,15 @@ const getItem = cache(async () => {
 
   return parsedDatabaseItems;
 })
+
+const getFirstDatabaseItems =async () : Promise<HomeProps> => {
+  if(!process.env.DATABASE_ID) throw new Error("DATABASE_ID is not defined");
+  const res = await getDatabaseFromNotion(process.env.DATABASE_ID);
+  const parsedDatabaseItems = parseDatabaseItems(res);
+
+  return {
+    databaseItems : parsedDatabaseItems
+  }
+}
+
+export const revalidate = 600;
