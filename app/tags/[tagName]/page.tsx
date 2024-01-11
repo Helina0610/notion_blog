@@ -63,3 +63,4 @@ const getItem = cache(async ({params} : TagPrams) => {
 
 
 
+export const revalidate = 600;
